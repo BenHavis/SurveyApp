@@ -6,9 +6,7 @@ import { useRouter } from 'next/navigation'
 import styles from './survey.module.css'
 import { submitSurvey } from '@/utils/supabase/clientqueries'
 
-const Survey = () => {
-
-    type SurveyQuestion = {
+     type SurveyQuestion = {
   id: number
   survey_id: number
   sort_order: number
@@ -16,6 +14,12 @@ const Survey = () => {
   description: string | null
   is_required: boolean
 }
+
+
+const Survey = () => {
+
+    const router = useRouter()
+
 
 
 const { TextArea } = Input
@@ -106,7 +110,10 @@ const [loading, setLoading] = useState(true)
     setSubmitting(true)
     const responseId = await submitSurvey(1, finalAnswers)
 
-    console.log('submitting with answers', finalAnswers)
+    router.replace(`/surveys/${responseId}`)
+
+
+    
     setSubmitting(false)
   }
 
