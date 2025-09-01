@@ -1,0 +1,47 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+
+.index {
+    font-size: .95rem;
+    color: '#666';
+}
+
+.question {
+    margin: 16px 0 8px;
+    font-weight: 500;
+}
+
+.description {
+    color: '#666';
+    margin-bottom: 16px;
+}
+
+.buttonArea {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}

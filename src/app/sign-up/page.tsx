@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Form, Input, Button, Typography, Alert} from 'antd'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import createClient from '@/utils/supabase/client'
 import styles from './signup.module.css'
 
@@ -10,6 +11,7 @@ const { Title, Paragraph } = Typography
 const SignUp = () => {
 
   const supabase = createClient()
+  const router = useRouter()
 
   const [submitting, setSubmitting] = useState<boolean>(false)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -36,10 +38,16 @@ const SignUp = () => {
         return
       }
 
-      setInfoMessage('Account created. If email confirmation is enabled, check your emai'l)
-    } catch(e: any) {
-      setErrorMessage(e?.message ?? 'Unexpected error signing up, please try again.')
-    } finally {
+     router.push('/survey')
+   } catch (e: unknown) {
+  if (e instanceof Error) {
+    setErrorMessage(e.message)
+  } else {
+    setErrorMessage('Unexpected error signing up, please try again.')
+  }
+}
+
+    finally {
       setSubmitting(false)
     }
   }
